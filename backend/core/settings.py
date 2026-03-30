@@ -75,7 +75,7 @@ DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
-        ssl_require=False
+        ssl_require=os.environ.get('DATABASE_URL', '').startswith('postgres')
     )
 }
 
@@ -96,9 +96,11 @@ USE_TZ = True
 # STATIC FILES
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR.parent, 'frontend', 'dist'),
-]
+FRONTEND_DIST = os.path.join(BASE_DIR.parent, 'frontend', 'dist')
+if os.path.exists(FRONTEND_DIST):
+    STATICFILES_DIRS = [FRONTEND_DIST]
+else:
+    STATICFILES_DIRS = []
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # MEDIA FILES
