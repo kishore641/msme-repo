@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --color-primary: #2e8b57;
+  --color-primary-light: #9bc9b5;
+  --color-accent: #aa3bff;
+  --color-accent-dark: #c084fc;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/* Fix for Leaflet marker shadow/image issue if needed */
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 1.5rem;
+  z-index: 10;
+}
