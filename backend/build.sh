@@ -2,7 +2,15 @@
 # Exit on error
 set -o errexit
 
-# Change directory to backend if necessary
+# Build Frontend
+echo "Building Frontend..."
+cd frontend
+npm install
+npm run build
+cd ..
+
+# Build Backend
+echo "Building Backend..."
 cd backend
 
 # Install dependencies
