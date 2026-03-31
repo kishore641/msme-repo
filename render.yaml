@@ -7,9 +7,7 @@ databases:
 services:
   - type: web
     name: msme-backend
-    runtime: python
-    buildCommand: "sh backend/build.sh"
-    startCommand: "gunicorn core.wsgi:application --chdir backend"
+    runtime: docker
     plan: free
     envVars:
       - key: DATABASE_URL
